@@ -119,22 +119,46 @@ function initContactForm() {
 
   if (!form || !emailInput || !feedback || !btn) return;
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = emailInput.value.trim();
     if (!email) return;
 
+    // Show loading state
     btn.disabled = true;
-    btn.innerHTML = '<span>Sent ✓</span>';
-    feedback.className = 'form-feedback success';
-    feedback.textContent = `Thank you! We'll reach out to ${email} shortly.`;
+    btn.innerHTML = '<span>Sending...</span>';
+    feedback.className = 'form-feedback';
+    feedback.textContent = '';
 
-    emailInput.value = '';
+    try {
+      const formData = new FormData(form);
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+      });
+      const result = await response.json();
 
-    setTimeout(() => {
+      if (result.success) {
+        feedback.className = 'form-feedback success';
+        feedback.textContent = `Thank you! We'll reach out to ${email} shortly.`;
+        emailInput.value = '';
+        btn.innerHTML = '<span>Sent ✓</span>';
+        setTimeout(() => {
+          btn.disabled = false;
+          btn.innerHTML = '<span>Contact Us</span>';
+          feedback.textContent = '';
+          feedback.className = 'form-feedback';
+        }, 4000);
+      } else {
+        throw new Error(result.message || 'Submission failed');
+      }
+    } catch (err) {
+      console.error('Web3Forms error:', err);
+      feedback.className = 'form-feedback error';
+      feedback.textContent = 'Something went wrong. Please try again.';
       btn.disabled = false;
       btn.innerHTML = '<span>Contact Us</span>';
-    }, 4000);
+    }
   });
 }
 

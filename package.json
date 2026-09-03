@@ -1,0 +1,21 @@
+{
+  "name": "1tap-am",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Smart NFC Cards for Restaurants, Cafes & Personal Use — Coming Soon Page",
+  "scripts": {
+    "dev": "npx -y serve -l 3000 .",
+    "start": "npx -y serve -l 3000 .",
+    "preview": "npx -y serve -l 3000 ."
+  },
+  "keywords": [
+    "nfc",
+    "restaurants",
+    "cafes",
+    "smart-cards",
+    "business-cards",
+    "coming-soon"
+  ],
+  "author": "1tap.am",
+  "license": "MIT"
+}

@@ -1,0 +1,602 @@
+/* ==========================================================================
+   1tap.am — Coming Soon Page
+   Minimalist Luxury: White Canvas + Ocean Tide Gradient Accents
+   Strictly Unscrollable (100dvh)
+   ========================================================================== */
+
+:root {
+  /* Color Tokens */
+  --color-white: #ffffff;
+  --color-bg: #ffffff;
+
+  /* Ocean Tide Gradients */
+  --ocean-deep: #032b43;
+  --ocean-marine: #0284c7;
+  --ocean-cyan: #06b6d4;
+  --ocean-teal: #14b8a6;
+
+  --grad-tide: linear-gradient(135deg, #0284c7 0%, #06b6d4 50%, #14b8a6 100%);
+  --grad-text: linear-gradient(125deg, #032b43 0%, #0284c7 50%, #0d9488 100%);
+  --grad-card: linear-gradient(145deg, #0c1524 0%, #041d33 55%, #052e49 100%);
+
+  /* Text Shades */
+  --text-primary: #091e30;
+  --text-secondary: #526779;
+  --text-muted: #94a3b8;
+
+  /* Typography */
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Easing */
+  --ease-snappy: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   Base & Unscrollable Viewport
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden;
+  background-color: var(--color-white);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  user-select: none;
+}
+
+/* ==========================================================================
+   Quiet Ocean Background Glow
+   ========================================================================== */
+.ambient-glow {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.32;
+}
+
+.orb-1 {
+  top: -10%;
+  left: -8%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.4) 0%, transparent 70%);
+}
+
+.orb-2 {
+  bottom: -15%;
+  right: -5%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(2, 132, 199, 0.3) 0%, transparent 70%);
+}
+
+.tide-mesh {
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(rgba(6, 182, 212, 0.06) 1px, transparent 1px);
+  background-size: 36px 36px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ==========================================================================
+   Page Container (Strictly 100dvh)
+   ========================================================================== */
+.page-container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  padding: 3rem 4.5rem 2rem 4.5rem;
+  max-width: 1540px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   Split Layout Grid
+   ========================================================================== */
+.hero-split {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 4rem;
+  flex: 1;
+  min-height: 0;
+}
+
+/* ==========================================================================
+   LEFT HERO COLUMN (Minimalist, Left-Aligned)
+   ========================================================================== */
+.left-hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2.25rem;
+}
+
+/* 1. Big Logo on Left */
+.brand-logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.brand-logo-img {
+  height: auto;
+  max-height: 140px;
+  /* Sized for optimal visual scale with padding */
+  width: auto;
+  max-width: 420px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  /* Seamlessly blends the white background into the canvas */
+  border: 3px solid var(--text-primary);
+  /* darker visible outline */
+  border-radius: 8px;
+  transition: transform 0.25s var(--ease-snappy);
+}
+
+.brand-logo-img:hover {
+  transform: scale(1.02);
+}
+
+/* 2. "Already near you at" & Social Buttons */
+.already-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.already-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ocean-marine);
+}
+
+.social-button-row {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 1.35rem;
+  background: #ffffff;
+  border: 1px solid rgba(2, 132, 199, 0.18);
+  border-radius: 14px;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 4px 16px rgba(2, 132, 199, 0.06);
+  transition: all 0.22s var(--ease-snappy);
+  cursor: pointer;
+}
+
+.social-btn .social-icon {
+  width: 19px;
+  height: 19px;
+  transition: transform 0.22s var(--ease-snappy);
+}
+
+.instagram-btn:hover {
+  border-color: #e1306c;
+  color: #e1306c;
+  box-shadow: 0 8px 24px rgba(225, 48, 108, 0.18);
+  transform: translateY(-2px);
+}
+
+.instagram-btn:hover .social-icon {
+  transform: scale(1.1);
+}
+
+.linkedin-btn:hover {
+  border-color: #0077b5;
+  color: #0077b5;
+  box-shadow: 0 8px 24px rgba(0, 119, 181, 0.18);
+  transform: translateY(-2px);
+}
+
+.linkedin-btn:hover .social-icon {
+  transform: scale(1.1);
+}
+
+.whatsapp-btn:hover {
+  border-color: #25d366;
+  color: #128c7e;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.18);
+  transform: translateY(-2px);
+}
+
+.whatsapp-btn:hover .social-icon {
+  transform: scale(1.1);
+}
+
+.social-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* 3. "Coming Soon to the Global network..." (Slides in ONCE from left to right and stops) */
+.coming-soon-wrapper {
+  overflow: hidden;
+  padding: 0.25rem 0;
+}
+
+.coming-soon-slide-in {
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: slideOnceIn 0.55s var(--ease-snappy) forwards;
+  animation-delay: 0.2s;
+}
+
+@keyframes slideOnceIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-headline {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 2.5vw, 2.3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.gradient-text {
+  background: var(--grad-tide);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 4. Email Contact Form */
+.contact-form-section {
+  width: 100%;
+  max-width: 460px;
+}
+
+.email-contact-form .input-group {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid rgba(2, 132, 199, 0.22);
+  border-radius: 14px;
+  padding: 0.3rem 0.35rem 0.3rem 1rem;
+  box-shadow: 0 4px 16px rgba(2, 132, 199, 0.06);
+  transition: all 0.2s var(--ease-snappy);
+}
+
+.email-contact-form .input-group:focus-within {
+  border-color: var(--ocean-marine);
+  box-shadow: 0 0 0 3.5px rgba(6, 182, 212, 0.16);
+}
+
+.email-contact-form input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--text-primary);
+}
+
+.email-contact-form input::placeholder {
+  color: var(--text-muted);
+}
+
+.submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.25rem;
+  background: var(--grad-tide);
+  color: #ffffff;
+  border: none;
+  border-radius: 11px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s var(--ease-snappy);
+  white-space: nowrap;
+}
+
+.submit-btn:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(6, 182, 212, 0.35);
+}
+
+.submit-btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.form-feedback {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  min-height: 1.1rem;
+}
+
+.form-feedback.success {
+  color: #0d9488;
+}
+
+/* ==========================================================================
+   RIGHT COLUMN: Ultra-Minimalist 3D Luxury NFC Card Showcase
+   ========================================================================== */
+.right-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+}
+
+.nfc-stage {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+}
+
+.card-halo-glow {
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  width: 80%;
+  height: 70%;
+  background: radial-gradient(ellipse, rgba(6, 182, 212, 0.22) 0%, rgba(2, 132, 199, 0.1) 60%, transparent 80%);
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 3D NFC Card Container */
+.nfc-card-3d {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  aspect-ratio: 1.586 / 1;
+  border-radius: 24px;
+  background: var(--grad-card);
+  box-shadow: 0 30px 60px rgba(3, 43, 67, 0.22), 0 0 0 1px rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.nfc-card-3d:hover {
+  box-shadow: 0 35px 70px rgba(2, 132, 199, 0.3), 0 0 30px rgba(6, 182, 212, 0.25), 0 0 0 1.5px rgba(255, 255, 255, 0.25);
+}
+
+.card-glass-specular {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.04) 35%, transparent 60%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.card-hologram-mesh {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(6, 182, 212, 0.22) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.card-inner {
+  position: relative;
+  z-index: 4;
+  height: 100%;
+  padding: 2.2rem 2.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Minimalist Micro Chip */
+.card-minimal-chip {
+  width: 38px;
+  height: 28px;
+  background: linear-gradient(135deg, #d4af37 0%, #aa820a 100%);
+  border-radius: 6px;
+  opacity: 0.92;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.contactless-symbol {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.card-bottom-row {
+  display: flex;
+  align-items: flex-end;
+}
+
+.card-brand-minimal .card-title {
+  font-family: var(--font-heading);
+  font-size: 2.1rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+}
+
+.card-brand-minimal .dot {
+  color: var(--ocean-cyan);
+}
+
+/* Tap Wave Ripple Simulation */
+.tap-ripple-effect {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.8) 0%, rgba(20, 184, 166, 0) 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.tap-ripple-effect.active {
+  animation: ripplePop 0.6s ease-out forwards;
+}
+
+@keyframes ripplePop {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(25);
+    opacity: 0;
+  }
+}
+
+/* Minimal Tap Toast */
+.tap-popup-toast {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  color: var(--text-primary);
+  border: 1px solid rgba(6, 182, 212, 0.35);
+  border-radius: 100px;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s var(--ease-snappy);
+  z-index: 10;
+  white-space: nowrap;
+}
+
+.tap-popup-toast.visible {
+  opacity: 1;
+  bottom: 20px;
+}
+
+.toast-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ocean-teal);
+}
+
+/* ==========================================================================
+   Minimalist Footer (Only All Rights Reserved)
+   ========================================================================== */
+.bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding-top: 1rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Responsive Adaptations (Always Unscrollable)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .page-container {
+    padding: 2rem 2.5rem 1.5rem 2.5rem;
+  }
+
+  .hero-split {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .right-visual {
+    display: none;
+    /* Keep clean and guaranteed unscrollable on smaller tablets */
+  }
+
+  .logo-name {
+    font-size: 2.8rem;
+  }
+
+  .slide-headline {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-container {
+    padding: 1.5rem 1.5rem 1.25rem 1.5rem;
+  }
+
+  .logo-icon-svg {
+    width: 60px;
+    height: 60px;
+  }
+
+  .logo-name {
+    font-size: 2.4rem;
+  }
+
+  .left-hero {
+    gap: 1.5rem;
+  }
+
+  .slide-headline {
+    font-size: 1.45rem;
+  }
+
+  .social-btn {
+    padding: 0.65rem 1.1rem;
+    font-size: 0.84rem;
+  }
+}

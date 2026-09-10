@@ -2,11 +2,12 @@
   "name": "1tap-am",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "Smart NFC Cards for Restaurants, Cafes & Personal Use — Coming Soon Page",
   "scripts": {
-    "dev": "npx -y serve -l 3000 .",
-    "start": "npx -y serve -l 3000 .",
-    "preview": "npx -y serve -l 3000 ."
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "keywords": [
     "nfc",
@@ -17,5 +18,8 @@
     "coming-soon"
   ],
   "author": "1tap.am",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^8.3.0"
+  }
 }

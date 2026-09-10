@@ -1,3 +1,6 @@
+import { inject } from '@vercel/analytics';
+inject();
+
 // dynamic year in footer
 document.getElementById('year').textContent = new Date().getFullYear();
 

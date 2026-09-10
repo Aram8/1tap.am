@@ -181,6 +181,16 @@ h1, h2, h3, h4 {
   color: var(--text-primary);
 }
 
+.nav-social-icon {
+  display: flex;
+  align-items: center;
+  color: var(--text-secondary);
+}
+
+.nav-social-icon:hover {
+  color: var(--accent-color);
+}
+
 /* Buttons */
 .btn-primary, .btn-primary-sm, .btn-secondary {
   display: inline-flex;
@@ -456,6 +466,19 @@ h1, h2, h3, h4 {
   color: var(--accent-color);
   margin-right: 0.75rem;
   font-weight: bold;
+}
+
+.service-cta {
+  display: inline-block;
+  margin-top: 1.5rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  transition: var(--transition);
+}
+
+.service-cta:hover {
+  color: var(--accent-hover);
+  transform: translateX(4px);
 }
 
 /* Partners Section */
